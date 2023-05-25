@@ -41,4 +41,12 @@ public class PatientServiceImplementation implements PatientService {
 		return this.patientRepository.findByLastName(lastName);		
 	}
 
+	@Transactional
+	public void delete(Long id) {
+		Patient patient = this.patientRepository.findById(id).orElse(null);
+		if(patient != null){
+			this.patientRepository.delete(patient);
+		}
+	}
+
 }

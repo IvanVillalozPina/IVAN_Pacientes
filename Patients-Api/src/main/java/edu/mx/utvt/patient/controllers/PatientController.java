@@ -38,5 +38,10 @@ public class PatientController {
 		return this.patientService.findAllByLastName(lastName);
 	}
 	
+	@DeleteMapping("/{id}")
+	public ResponseEntity<String> delete(@RequestParam Long id) {
+		patientService.delete(id);
+		return ResponseEntity.ok().body("Paciente eliminado!");
+	}
 
 }
